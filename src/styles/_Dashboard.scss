@@ -1,0 +1,21 @@
+
+.CustomCard{
+    border : 1px solid  #CDDADE !important;
+    border-radius: 1.2rem !important;
+    .borderColor{
+        border-color: #CDDADE !important;
+    }
+}
+.bodybackground{
+    background-color: #073644 !important;
+}
+.roundedLeftBottom{
+    border-radius:  0 0 0 2rem !important;
+}
+.Select{
+    width: 18rem !important;
+    
+}
+.popover{
+ --bs-popover-max-width: 99% !important;    
+    }

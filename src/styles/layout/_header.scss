@@ -1,0 +1,56 @@
+$header-background: #ffffff;
+$header-link-color: rgba(44, 56, 74, 0.681);
+$header-link-color-hover: rgba(44, 56, 74, 0.95);
+$header-brand-color: #4f5d73;
+$text-color: #fff;
+
+.header {
+  background: $header-background;
+  width: 100%;
+
+  .header-brand {
+    color: $header-brand-color;
+  }
+
+  .header-navbar {
+    min-height: 3rem;
+
+    .header-toggler {
+      color: $header-link-color;
+    }
+.header-title {
+  text-align: left;
+  font: normal normal bold 24px/39px Sarala;
+  letter-spacing: 0px;
+  color: #000000;
+  text-transform: capitalize;
+  opacity: 1;
+}
+    .header-nav {
+      .nav-link {
+        color: $header-link-color;
+
+        &:hover {
+          color: $header-link-color-hover;
+        }
+      }
+    }
+  }
+
+  .breadcrumb {
+    min-height: 2rem;
+
+    .breadcrumb-item {
+      a {
+        color: $header-link-color;
+
+        &:hover {
+          color: $header-link-color-hover;
+        }
+      }
+    }
+  }
+}
+.roundedLeftTop{
+  border-radius: 2rem 0 0 0 !important;
+}
