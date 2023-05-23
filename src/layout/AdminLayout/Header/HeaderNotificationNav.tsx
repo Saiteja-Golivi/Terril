@@ -34,9 +34,9 @@ export default function HeaderNotificationNav() {
 		<Nav>
 			<Nav.Item>
 				<Dropdown>
-					<Dropdown.Toggle as={NavLink} bsPrefix="hide-caret" id="dropdown-notification" className='px-5 border-end'>
-						<FontAwesomeIcon icon={faBell} size="lg" color='black'  />
-						<Badge pill bg="danger" className="position-absolute top-0 right-0">
+					<Dropdown.Toggle as={NavLink} bsPrefix="hide-caret" id="dropdown-notification">
+						<FontAwesomeIcon icon={faBell} size="lg" color='black' className='mt-3'  />
+						<Badge pill bg="danger" className="position-absolute top-5 right-0">
                          5
 						</Badge>
 					</Dropdown.Toggle>

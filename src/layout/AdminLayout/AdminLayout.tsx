@@ -49,9 +49,8 @@ export default function AdminLayout({children}: PropsWithChildren) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<div ref={ref} className="position-absolute w-100" />
 
-			<Sidebar isShow={isShowSidebar} isShowMd={isShowSidebarMd} />
+			<Sidebar isShow={isShowSidebar} isShowMd={isShowSidebarMd}/>
 
 			<div className="wrapper d-flex flex-column min-vh-100 bodybackground ">
 				<Header toggleSidebar={toggleIsShowSidebar} toggleSidebarMd={toggleIsShowSidebarMd} />

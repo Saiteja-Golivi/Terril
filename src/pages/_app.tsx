@@ -7,6 +7,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import { SSRProvider } from 'react-bootstrap'
 import { ProgressBar } from '@components/ProgressBar'
 import '../assets/scss/theme.scss'
+import '../assets/scss/custom/fonts/_fonts.scss'
 // You change this configuration value to false so that the Font Awesome core SVG library
 // will not try and insert <style> elements into the <head> of the page.
 // Next.js blocks this from happening anyway so you might as well not even try.

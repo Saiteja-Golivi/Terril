@@ -74,12 +74,12 @@ export const Tables: React.FC<ITablesProps> = ({ columns, data }) => {
 		<>
 			<div className="card mb-4 rounded-5 border-1 tablestyles"
 				style={{ borderLeft: '1px solid #CDDADE', borderRight: '1px solid #CDDADE', borderBottom: '1px solid #CDDADE' }}>
-				<div className='container-fluid' >
+				<div className='container-fluid'>
 					<div className='d-flex justify-content-between align-items-end pb-3'>
 						<div>
-							<h5 className='fs-6 position-relative fw-bold font-size-16'>Recently added Residents
-								<span className='bg-light rounded-circle p-3'>100</span>
-							</h5>							
+							<text className='table-header'>Recently added Residents
+								<text className='bg-light rounded-circle p-3'>100</text>
+							</text>							
 						</div>
 						<div className='d-flex'>						
 							<input type="text" className='mt-3 p-2 rounded-5 serach'placeholder="Search by name"/>
@@ -89,13 +89,15 @@ export const Tables: React.FC<ITablesProps> = ({ columns, data }) => {
 
 							<Link href={"/admitResident"}>
 							
-							<button className='btn-rounded mt-3 p-2 serach'>
-								Admit Resident
+							<button className='admit-btn'>
+								<text className='admit-btn-txt'>Admit Resident</text>
 							</button>
 							</Link>					
 						
-							<button className='btn-rounded mt-3 p-2 serach'>
+							<button className='meet-btn'>
+								<text className='meet-btn-txt'>
 								Start Facility Meeting
+								</text>
 							</button>
 						</div>
 					</div>

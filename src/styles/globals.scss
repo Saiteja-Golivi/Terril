@@ -7,11 +7,14 @@ $enable-negative-margins: true;
 @import "layout/header";
 @import "layout/progress";
 @import "layout/sidebar";
-
+@import "../assets/scss/custom/fonts/fonts";
 @import "~nprogress/nprogress.css";
 
 @import "_custom";
 @import "table";
 @import "_Dashboard";
-@import "./admitResident.scss"
-    
+@import "./admitResident.scss";
+
+body{
+    font-family: 'Sarala', sans-serif;
+}

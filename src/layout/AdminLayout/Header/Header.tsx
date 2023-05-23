@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faBarsProgress } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
-import Breadcrumb from '@layout/AdminLayout/Breadcrumb/Breadcrumb'
+import Image from "next/image";
 import HeaderNotificationNav from '@layout/AdminLayout/Header/HeaderNotificationNav'
 import HeaderProfileNav from '@layout/AdminLayout/Header/HeaderProfileNav'
 import { Button, Container, Dropdown, OverlayTrigger, Popover } from 'react-bootstrap'
@@ -68,7 +68,7 @@ export default function Header(props: HeaderProps) {
             <option value="3">Select Facility</option>
           </select>
         </div>
-       <div className="header-nav " > 
+       <div className="header-nav" > 
        {/* ps-5 remove */}
           <div
             className="header-toggler d-none d-md-inline-block  me-md-3 rounded-circle border-secondary"
@@ -78,8 +78,8 @@ export default function Header(props: HeaderProps) {
             {/* mega menu  start */}
             <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
 
-              <Button variant="success">
-                <FontAwesomeIcon icon={faBars} color='#000000' size='lg' />
+              <Button className="rounded-circle">
+                <Image src={"/Icons/hamburger Menu_IC.png"} color="#000000" alt={""} width={16} height={18}/>
               </Button>
 
             </OverlayTrigger>

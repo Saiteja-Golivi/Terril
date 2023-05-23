@@ -8,7 +8,6 @@ import {
   faCircleInfo,
   faBed,
   faArrowRightFromBracket,
-  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import React, {
   type PropsWithChildren,
@@ -35,7 +34,7 @@ const SidebarNavItem = (props: SidebarNavItemProps) => {
   const { icon, children, href } = props;
 
   return (
-    <Nav.Item>
+    <Nav.Item className="nav-item">
       <Link href={href} passHref legacyBehavior>
         <Nav.Link className="px-3 py-2 d-flex align-items-center">
           {icon ? (
@@ -134,8 +133,6 @@ export default function SidebarNav() {
   return (
     <>
       <ul className="list-unstyled fs-4">
-        <SidebarNavItem icon={faBars} href="/"/>
-
         <SidebarNavItem icon={faTableColumns} href="/login">
           Dashboard
         </SidebarNavItem>
@@ -152,7 +149,7 @@ export default function SidebarNav() {
           Help
         </SidebarNavItem>
 
-		<div >
+		<div>
       
           <SidebarNavItem icon={faArrowRightFromBracket} href="/login">
 			Log Out

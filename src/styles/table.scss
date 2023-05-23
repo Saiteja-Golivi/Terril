@@ -2,11 +2,18 @@ $margin-right: 10px;
 $margin-left: 30px;
 
 
-
-.serach {
-    margin-right: $margin-right;
-    
-    
+:root{
+    font-family: 'Sarala', sans-serif;
+}
+.search {
+    width: 158px;
+    height: 35px;
+    /* UI Properties */
+    border: 1px solid #A0B5BB;
+    border-radius: 20px;
+    opacity: 1;
+    margin-right: 10px;    
+    margin-top: 24px;
 }
 .rounded-circle{
     margin-left: $margin-left;
@@ -16,4 +23,57 @@ $margin-left: 30px;
     position: absolute;
     top: 53%;
     right: 2rem !important;
+}
+.action{
+    color: black;
+}
+.table-header{
+    text-align: left;
+font: normal normal bold 15px/20px Sarala;
+letter-spacing: 0px;
+color: #2A3540;
+opacity: 1;
+padding-left:30px;
+padding-top: 28px;
+}
+.admit-btn{
+    width: 134px;
+height: 36px;
+/* UI Properties */
+background: #20AED9 0% 0% no-repeat padding-box;
+border: 1px solid #20AED9;
+border-radius: 100px;
+opacity: 1;
+margin-top: 23px;
+}
+.admit-btn-txt{
+    width: 97px;
+height: 22px;
+/* UI Properties */
+text-align: left;
+font: normal normal normal 14px/30px Sarala;
+letter-spacing: 0px;
+color: #FFFFFF;
+opacity: 1;
+}
+.meet-btn{
+    margin-top: 23px;
+margin-left: 10px;
+width: 167px;
+height: 36px;
+/* UI Properties */
+background: #20AED9 0% 0% no-repeat padding-box;
+border: 1px solid #20AED9;
+border-radius: 100px;
+opacity: 1;
+}
+.meet-btn-txt{
+    width: 133px;
+height: 22px;
+/* UI Properties */
+text-align: left;
+font: normal normal normal 14px/30px Sarala;
+letter-spacing: 0px;
+color: #FFFFFF;
+opacity: 1;
 }

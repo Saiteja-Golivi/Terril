@@ -9,6 +9,7 @@ import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { Tables } from "@components/Table/Table";
 import { faker } from "@faker-js/faker";
 import { Button, OverlayTrigger, Popover } from "react-bootstrap";
+import Image from "next/image";
 
 const Dashboard = (props: any) => {
 //   let [data, setData] = useState<{ email: string; location: string }[]>([]);
@@ -199,29 +200,29 @@ const Dashboard = (props: any) => {
       <div className="row">
         <div className="col-sm-6 col-lg-4">
           <div className="card CustomCard">
-            <div className="p-3 fs-3 d-flex justify-content-between align-items-end">
-              <span className="mt-2 fw-bolder">5 Days Plan</span>
-              <FontAwesomeIcon icon={faCalendar} size="2x" color="#b67be8" />
+            <div className="cards-title d-flex justify-content-between align-items-end">
+              <text>5 Days Plan</text>
+              <Image src={"/Icons/Plan_IC.png"}  alt={""} width={44} height={44}/>
             </div>
             <div className="card-body border-top borderColor p-0">
               <div className="row text-center">
                 <div className="col py-3 border-end borderColor">
-                  <div className="fs-5 fw-semibold">10</div>
-                  <div className="text-info fw-bold small">
+                  <div className="cards-num">10</div>
+                  <div className="cards-info">
                     Not Started
                   </div>
                 </div>
                 <div className="vr p-0" />
                 <div className="col py-3 border-end borderColor">
-                  <div className="fs-5 fw-semibold">20</div>
-                  <div className="text-info fw-bold small">
+                  <div className="cards-num">20</div>
+                  <div className="cards-info">
                     Incomplete
                   </div>
                 </div>
                 <div className="vr p-0" />
                 <div className="col py-3">
-                  <div className="fs-5 fw-semibold">20</div>
-                  <div className="text-info fw-bold small">
+                  <div className="cards-num">20</div>
+                  <div className="cards-info">
                     Overdue 14 days
                   </div>
                 </div>
@@ -232,20 +233,20 @@ const Dashboard = (props: any) => {
 
         <div className="col-sm-6 col-lg-4">
           <div className="card  CustomCard">
-            <div className="p-3 fs-3 d-flex justify-content-between align-items-end">
-              <span className="mt-2 fw-bolder">IPA</span>
-              <FontAwesomeIcon icon={faStethoscope} size="2x" color="green" />
+            <div className="cards-title d-flex justify-content-between align-items-end">
+              <text>IPA</text>
+              <Image src={"/Icons/IPA_IC.png"}  alt={""} width={44} height={44}/>
             </div>
             <div className="card-body border-top borderColor p-0">
               <div className="row text-center">
                 <div className="col py-3 border-end borderColor">
-                  <div className="fs-5 fw-semibold">10</div>
-                  <div className=" text-info fw-bold small">In Progress</div>
+                  <div className="cards-num">10</div>
+                  <div className=" cards-info">In Progress</div>
                 </div>
                 {/* <div className="vr p-0" /> */}
                 <div className="col py-3">
-                  <div className="fs-5 fw-semibold">20</div>
-                  <div className=" text-info fw-bold small">
+                  <div className="cards-num">20</div>
+                  <div className=" cards-info">
                     Overdue 14 days
                   </div>
                 </div>
@@ -255,24 +256,21 @@ const Dashboard = (props: any) => {
         </div>
         <div className="col-sm-6 col-lg-4">
           <div className="card  CustomCard">
-            <div className="p-3 fs-3 d-flex justify-content-between align-items-end">
-              <span className="mt-2 fw-bolder">LCD </span>
-              <FontAwesomeIcon
-                icon={faHandsHoldingCircle}
-                size="2x"
-                color="skyblue"
-              />
+            <div className="cards-title d-flex justify-content-between align-items-end">
+              <text>LCD </text>
+              <Image src={"/Icons/LCD_IC.png"}  alt={""} width={44} height={44}/>
+
             </div>
             <div className="card-body border-top borderColor p-0">
               <div className="row text-center">
                 <div className="col py-3 border-end borderColor">
-                  <div className="fs-5 fw-semibold">10</div>
-                  <div className=" text-info fw-bold small">Last 7 days</div>
+                  <div className="cards-num">10</div>
+                  <div className=" cards-info">Last 7 days</div>
                 </div>
                 {/* <div className="vr p-0" /> */}
                 <div className="col py-3">
-                  <div className="fs-5 fw-semibold">20</div>
-                  <div className="text-uppercase text-info fw-bold small">
+                  <div className="cards-num">20</div>
+                  <div className="text-uppercase cards-info">
                     Next 7 days
                   </div>
                 </div>

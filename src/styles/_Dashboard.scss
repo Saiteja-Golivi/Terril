@@ -19,3 +19,24 @@
 .popover{
  --bs-popover-max-width: 99% !important;    
     }
+
+.cards-title{
+padding: 21px 30px 20px 30px;
+font: normal normal bold 24px/24px Sarala;
+font-size: 24px;
+text-align: left;
+color: #2A3540;
+opacity: 1;
+}
+.cards-num{
+    font: normal normal bold 18px/24px Sarala;
+letter-spacing: 0px;
+color: #2A3540;
+font-size: 18px;
+}
+.cards-info{
+    font: normal normal normal 12px/24px Sarala;
+letter-spacing: 0px;
+color: #006481;
+font-size: 12px;
+}

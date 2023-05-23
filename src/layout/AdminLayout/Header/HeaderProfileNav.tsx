@@ -46,7 +46,7 @@ export default function HeaderProfileNav() {
   return (
     <Nav>
       <Dropdown as={NavItem}>
-        <Dropdown.Toggle variant="link" bsPrefix="hide-caret" className="py-0 px-2 rounded-0" id="dropdown-profile">
+        <Dropdown.Toggle variant="link" bsPrefix="hide-caret" className="py-0 px-2 rounded-0 mt-3" id="dropdown-profile">
           <div className="avatar position-relative">
             <Image
               fill
