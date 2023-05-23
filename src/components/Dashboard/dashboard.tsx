@@ -198,30 +198,30 @@ const Dashboard = (props: any) => {
     <>
       <div className="row">
         <div className="col-sm-6 col-lg-4">
-          <div className="card mb-4">
-            <div className="card-header fs-5 d-flex justify-content-between align-items-end">
-              <span className="mt-2">5 Days Plan</span>
+          <div className="card CustomCard">
+            <div className="p-3 fs-3 d-flex justify-content-between align-items-end">
+              <span className="mt-2 fw-bolder">5 Days Plan</span>
               <FontAwesomeIcon icon={faCalendar} size="2x" color="#b67be8" />
             </div>
-            <div className="card-body">
+            <div className="card-body border-top borderColor p-0">
               <div className="row text-center">
-                <div className="col">
+                <div className="col py-3 border-end borderColor">
                   <div className="fs-5 fw-semibold">10</div>
-                  <div className="text-uppercase text-black-50 small">
+                  <div className="text-info fw-bold small">
                     Not Started
                   </div>
                 </div>
                 <div className="vr p-0" />
-                <div className="col">
+                <div className="col py-3 border-end borderColor">
                   <div className="fs-5 fw-semibold">20</div>
-                  <div className="text-uppercase text-black-50 small">
+                  <div className="text-info fw-bold small">
                     Incomplete
                   </div>
                 </div>
                 <div className="vr p-0" />
-                <div className="col">
+                <div className="col py-3">
                   <div className="fs-5 fw-semibold">20</div>
-                  <div className="text-uppercase text-black-50 small">
+                  <div className="text-info fw-bold small">
                     Overdue 14 days
                   </div>
                 </div>
