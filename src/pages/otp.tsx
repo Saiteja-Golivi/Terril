@@ -41,11 +41,11 @@ const OtpPage = () => {
 
 		if (timer === 0) {
 			setIsTimerActive(false);
-			clearInterval(interval);
+			clearInterval(interval!);
 		}
 
 		return () => {
-			clearInterval(interval);
+			clearInterval(interval!);
 		};
 	}, [isTimerActive, timer]);
 
