@@ -13,7 +13,7 @@ $text-color: #fff;
   }
 
   .header-navbar {
-    min-height: 3rem;
+    min-height: rem;
 
     .header-toggler {
       color: $header-link-color;
@@ -55,3 +55,15 @@ $text-color: #fff;
 .roundedLeftTop{
   border-radius: 2rem 0 0 0 !important;
 }
+.notification{
+/* UI Properties */
+background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 1px solid #A0B5BB;
+border-radius: 70px;
+opacity: 1;
+margin-top: 20px;
+}
+.notification-icon{
+  margin-right: 10px;
+}
+

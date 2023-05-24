@@ -1,7 +1,7 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleLeft, faBars, faBarsProgress} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faAlignRight, faAngleLeft, faArrowRight, faBars, faBarsProgress} from '@fortawesome/free-solid-svg-icons';
 import React, {useEffect, useState} from 'react';
-import classNames from "classnames";
+import classNames from 'classnames';
 import {Button} from 'react-bootstrap';
 import SidebarNav from './SidebarNav';
 
@@ -31,9 +31,9 @@ export default function Sidebar(props: {isShow: boolean; isShowMd: boolean}) {
 			})}
 			id="sidebar"
 		>
-			<div className="sidebar-brand d-none d-md-flex align-items-center justify-content-center">
+			<div className="sidebar-brand d-none d-md-flex align-items-center ">
 			  
-					<text className='sidebar-title'>{isNarrow ? "TH": "TERRILL HEALTHCARE"}</text>
+				<text className='sidebar-title'>{isNarrow ? 'TH' : 'TERRILL HEALTHCARE'}</text>
       
 			</div>
 			<Button
@@ -43,9 +43,9 @@ export default function Sidebar(props: {isShow: boolean; isShowMd: boolean}) {
 				type="button"
 				aria-label="sidebar toggler"
 			>
-				<FontAwesomeIcon className="sidebar-toggler-chevron" icon={faBars} fontSize={24} />
+				<FontAwesomeIcon className="sidebar-toggler-chevron" icon={faArrowRight} fontSize={24} />
 			</Button>
-			<div className="sidebar-nav flex-fill">
+			<div className="sidebar-nav">
 			
 				<SidebarNav/>
 			</div>

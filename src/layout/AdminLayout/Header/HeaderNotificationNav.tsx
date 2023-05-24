@@ -13,6 +13,8 @@ import {
 } from 'react-bootstrap';
 import Link from 'next/link';
 import React, {type PropsWithChildren} from 'react';
+import Image from 'next/image';
+import {Button} from 'reactstrap';
 
 type ItemWithIconProps = {
 	icon: IconDefinition;
@@ -34,11 +36,13 @@ export default function HeaderNotificationNav() {
 		<Nav>
 			<Nav.Item>
 				<Dropdown>
-					<Dropdown.Toggle as={NavLink} bsPrefix="hide-caret" id="dropdown-notification">
-						<FontAwesomeIcon icon={faBell} size="lg" color='black' className='mt-3'  />
-						<Badge pill bg="danger" className="position-absolute top-5 right-0">
+					<Dropdown.Toggle as={NavLink} bsPrefix="hide-caret">
+						<Button className='notification' color='white'>
+							<Image src={'/Icons/Notification_IC.png'} alt={''} width={23} height={18} className='notification-icon'/>
+						</Button>
+						{/* <Badge pill bg="danger" className="position-absolute top-5 right-0 ">
                          5
-						</Badge>
+						</Badge> */}
 					</Dropdown.Toggle>
 					<Dropdown.Menu className="pt-0" align="end">
 						<Dropdown.Header className="bg-light fw-bold rounded-top">You have 5 notifications</Dropdown.Header>

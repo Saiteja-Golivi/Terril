@@ -57,7 +57,7 @@ $sidebar-overlay-z-index: 1025;
       }
 
       .nav-icon {
-        flex: 0 0 4rem;
+        margin-left: 2px;
       }
     }
 
@@ -139,7 +139,9 @@ $sidebar-overlay-z-index: 1025;
         }
       }
     }
-
+.nav-title{
+  margin-left: 20px;
+}
     &.md-hide {
       margin-left: calc(-1 * var(--sidebar-width));
 
@@ -148,6 +150,10 @@ $sidebar-overlay-z-index: 1025;
       }
     }
   }
+}
+
+.nav-items:last-child{
+  margin-top: 580px;
 }
 
 .sidebar-overlay {
@@ -162,7 +168,7 @@ $sidebar-overlay-z-index: 1025;
   text-transform: uppercase;
   text-align: center;
   opacity: 1;
-  margin-left: 2em;
+  margin-left: 2.3em;
 }
 .nav-item{
   margin-bottom: 20px;

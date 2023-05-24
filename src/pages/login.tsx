@@ -2,7 +2,7 @@ import {type NextPage} from 'next';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faUser} from '@fortawesome/free-regular-svg-icons';
 import {faLock} from '@fortawesome/free-solid-svg-icons';
-import {Button, Col, Container, Form, InputGroup, Row,} from 'react-bootstrap';
+import {Button, Col, Container, Form, InputGroup, Row} from 'react-bootstrap';
 import Link from 'next/link';
 import {type SyntheticEvent, useState} from 'react';
 import {useRouter} from 'next/router';
@@ -21,7 +21,7 @@ const Login: NextPage = () => {
 			return redirect.toString();
 		}
 
-		return '/';
+		return '/otp';
 	};
 
 	const login = async (e: SyntheticEvent) => {
@@ -40,18 +40,18 @@ const Login: NextPage = () => {
 
 
 
-  const handleClick = () => {
-    router.push('/forgetPassword');
-  };
+	const handleClick = () => {
+		void router.push('/forgetPassword');
+	};
 
 
 	return (
 		<div className="bg-light min-vh-100 d-flex flex-row align-items-center dark:bg-transparent">
 			<Container>
-				<Row className="justify-content-center align-items-center px-3">
-					<Col lg={8}>
+				<Row className="justify-content-center align-items-center">
+					<Col lg={10}>
 						<Row>
-							<Col md={7} className="bg-white border p-5">
+							<Col md={8} className="bg-white border p-5">
 								<div className="">
 									<h1>Login</h1>
 									<p className="text-black-50">Sign In to your account</p>
@@ -103,23 +103,6 @@ const Login: NextPage = () => {
 											</Col>
 										</Row>
 									</form>
-								</div>
-							</Col>
-							<Col
-								md={5}
-								className="bg-primary text-white d-flex align-items-center justify-content-center p-5"
-							>
-								<div className="text-center">
-									<h2>Sign up</h2>
-									<p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-									<Link href="/register">
-										<button className="btn btn-lg btn-outline-light mt-3" type="button">
-                                      Register Now!
-										</button>
-									</Link>
 								</div>
 							</Col>
 						</Row>

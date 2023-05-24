@@ -1,25 +1,23 @@
 import RowsPerPage from '@components/Pagination/RowsPerPage';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useMemo } from 'react';
-import { useTable, useSortBy, useGlobalFilter } from "react-table";
+import {faSearch} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import React, {useMemo} from 'react';
+import {useTable, useSortBy, useGlobalFilter} from 'react-table';
 import Link from 'next/link';
 
-interface IRow {
-	[key: string]: any;
-}
+type IRow = Record<string, any>;
 
-interface IColumn {
+type IColumn = {
 	Header: string;
 	accessor: string;
-}
+};
 
-interface ITablesProps {
+type ITablesProps = {
 	columns: any;
 	data: IRow[];
-}
+};
 
-export const Tables: React.FC<ITablesProps> = ({ columns, data }) => {
+export const Tables: React.FC<ITablesProps> = ({columns, data}) => {
 
 	const {
 		getTableProps,
@@ -28,52 +26,48 @@ export const Tables: React.FC<ITablesProps> = ({ columns, data }) => {
 		rows,
 		prepareRow,
 		state,
-		// setGlobalFilter,
+		// SetGlobalFilter,
 	} = useTable(
 		{
 			columns,
 			data,
 		},
 		useGlobalFilter,
-		useSortBy
+		useSortBy,
 	);
 
-	// const { globalFilter } = state;
+	// Const { globalFilter } = state;
 
-	const renderHeader = () => {
-		return headerGroups.map((headerGroup: any) => (
-			<tr {...headerGroup.getHeaderGroupProps()}>
-				{headerGroup.headers.map((column: any) => (
-					<th {...column.getHeaderProps(column.getSortByToggleProps())}>
-						{column.render('Header')}
-						<span>
-							{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
-						</span>
-					</th>
+	const renderHeader = () => headerGroups.map((headerGroup: any) => (
+		<tr {...headerGroup.getHeaderGroupProps()}>
+			{headerGroup.headers.map((column: any) => (
+				<th {...column.getHeaderProps(column.getSortByToggleProps())}>
+					{column.render('Header')}
+					<span>
+						{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
+					</span>
+				</th>
+			))}
+		</tr>
+	));
+
+	const renderBody = () => rows.map((row: any) => {
+		prepareRow(row);
+		return (
+			<tr {...row.getRowProps()}>
+				{row.cells.map((cell: any) => (
+					<td {...cell.getCellProps()}>{cell.render('Cell')}</td>
 				))}
 			</tr>
-		));
-	};
-
-	const renderBody = () => {
-		return rows.map((row: any) => {
-			prepareRow(row);
-			return (
-				<tr {...row.getRowProps()}>
-					{row.cells.map((cell: any) => (
-						<td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-					))}
-				</tr>
-			);
-		});
-	};
+		);
+	});
 
 
 
 	return (
 		<>
 			<div className="card mb-4 rounded-5 border-1 tablestyles"
-				style={{ borderLeft: '1px solid #CDDADE', borderRight: '1px solid #CDDADE', borderBottom: '1px solid #CDDADE' }}>
+				style={{borderLeft: '1px solid #CDDADE', borderRight: '1px solid #CDDADE', borderBottom: '1px solid #CDDADE'}}>
 				<div className='container-fluid'>
 					<div className='d-flex justify-content-between align-items-end pb-3'>
 						<div>
@@ -82,16 +76,16 @@ export const Tables: React.FC<ITablesProps> = ({ columns, data }) => {
 							</text>							
 						</div>
 						<div className='d-flex'>						
-							<input type="text" className='mt-3 p-2 rounded-5 serach'placeholder="Search by name"/>
+							<input type="text" className='search'placeholder="Search by name"/>
 							<div className='position-relative'>
-							<FontAwesomeIcon icon={faSearch} className='SearchIcon'/>
+								<FontAwesomeIcon icon={faSearch} className='SearchIcon'/>
 							</div>
 
-							<Link href={"/admitResident"}>
+							<Link href={'/admitResident'}>
 							
-							<button className='admit-btn'>
-								<text className='admit-btn-txt'>Admit Resident</text>
-							</button>
+								<button className='admit-btn'>
+									<text className='admit-btn-txt'>Admit Resident</text>
+								</button>
 							</Link>					
 						
 							<button className='meet-btn'>
@@ -121,8 +115,8 @@ export const Tables: React.FC<ITablesProps> = ({ columns, data }) => {
 			</div>
 
 		</>
-	)
-}
+	);
+};
 
 
 export default Tables;

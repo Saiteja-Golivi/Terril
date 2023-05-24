@@ -52,7 +52,7 @@ export default function AdminLayout({children}: PropsWithChildren) {
 
 			<Sidebar isShow={isShowSidebar} isShowMd={isShowSidebarMd}/>
 
-			<div className="wrapper d-flex flex-column min-vh-100 bodybackground ">
+			<div className="wrapper d-flex flex-column min-vh-100 bodybackground">
 				<Header toggleSidebar={toggleIsShowSidebar} toggleSidebarMd={toggleIsShowSidebarMd} />
 				<div className="body flex-grow-1 px-sm-4 bg-light py-4 roundedLeftBottom">
 					<div className='container-fluid'>
