@@ -39,7 +39,7 @@ const OtpPage = () => {
 		width: '80px',
 		height:'50px',
 		margin:'5% 0 10% 7%',
-		textAlign :'center',
+		textAlign :"center",
 		borderRadius :'20px',
 	};
 
@@ -97,7 +97,11 @@ const OtpPage = () => {
 							value={otp}
 							onChange={setOtp}
 							numInputs={4}
-							renderInput={(props) => <input {...props} style={otpStyle} />}
+							renderInput={(props) => <input {...props}  style={{width: '80px',
+							height:'50px',
+							margin:'5% 0 10% 7%',
+							textAlign :"center",
+							borderRadius :'20px',}} />}
 						/>
 
 				
