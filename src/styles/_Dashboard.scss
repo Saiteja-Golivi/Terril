@@ -40,3 +40,21 @@ letter-spacing: 0px;
 color: #006481;
 font-size: 12px;
 }
+
+.card-content {
+  position: relative;
+}
+
+.card-content::after {
+  content: '';
+  position: absolute;
+  left: 52%;
+  transform: translateX(-50%);
+  height: 4px; /* Adjust as desired */
+  margin-top: 12px;
+  background-color: #E4A00A;
+}
+
+.col.active .card-content::after {
+  width: 70%; /* Adjust as desired */
+}

@@ -1,5 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+// Otp.stories.tsx
+
 import {useState, useEffect} from 'react';
 import {useRouter} from 'next/router';
+import {Form, InputGroup} from 'react-bootstrap';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faLock} from '@fortawesome/free-solid-svg-icons';
+import OtpInput from 'react-otp-input';
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const OtpPage = () => {
 	const router = useRouter();
@@ -14,16 +26,21 @@ const OtpPage = () => {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		// Perform verification logic with the entered OTP
-		// You can make an API call to verify the OTP or implement your own validation logic
-
-		// Redirect to the next page if OTP is valid
-		router.push('/');
+		
+		void router.push('/');
 	};
 
-	const handleResendOTP = () => {
+	const handleResendOtp = () => {
 		// Logic to resend OTP
 		startTimer();
+	};
+
+	const otpStyle = {
+		width: '80px',
+		height:'50px',
+		margin:'5% 0 10% 7%',
+		textAlign :'center',
+		borderRadius :'20px',
 	};
 
 	const startTimer = () => {
@@ -32,7 +49,11 @@ const OtpPage = () => {
 	};
 
 	useEffect(() => {
+
+		console.log(toast.success);
+		
 		let interval: NodeJS.Timeout;
+
 		if (isTimerActive) {
 			interval = setInterval(() => {
 				setTimer((prevTimer) => prevTimer - 1);
@@ -46,30 +67,53 @@ const OtpPage = () => {
 
 		return () => {
 			clearInterval(interval!);
+			if (!isTimerActive) {
+				// eslint-disable-next-line new-cap
+				NotifyToast();
+			}
 		};
 	}, [isTimerActive, timer]);
 
 
+	const NotifyToast = () => {
+		toast.success('OTP has been sent to registered Email ID and number!', { 
+			position: toast.POSITION.TOP_RIGHT,
+		});
+	};
+
+	
+
 
 	return (
-		<div className="d-flex justify-content-center align-items-center vh-100">
-			<div className="card" style={{width: '400px'}}>
+		<div className="d-flex justify-content-center align-items-center vh-100 login-main">
+			<div className='login-card'>
 				<div className="card-body">
-					<h1 className="card-title text-center">Enter OTP</h1>
+					<h3 className="text-center mb-3">Enter OTP</h3>
 					<form onSubmit={handleSubmit}>
-						<div className="mb-3">
-							<input type="text" className="form-control" value={otp} onChange={handleOtpChange} />
+
+						<ToastContainer /> 
+
+	     		   <OtpInput
+							value={otp}
+							onChange={setOtp}
+							numInputs={4}
+							renderInput={(props) => <input {...props} style={otpStyle} />}
+						/>
+
+				
+					  <div className='d-flex justify-content-between'>
+							<button type="submit" className="btn btn-primary w-60">Verify OTP</button>
+							{isTimerActive ? (
+								<button className="btn btn-link mt-3" disabled>
+                                   Resend OTP in {timer}s
+								</button>
+							) : (
+								<button className="btn btn-link" onClick={handleResendOtp}>
+                                   Resend OTP
+								</button>
+							)}
 						</div>
-						<button type="submit" className="btn btn-primary w-100">Verify OTP</button>
-						{isTimerActive ? (
-							<button className="btn btn-link mt-3" disabled>
-              Resend OTP in {timer}s
-							</button>
-						) : (
-							<button className="btn btn-link mt-3" onClick={handleResendOTP}>
-              Resend OTP
-							</button>
-						)}
+						
 					</form>
 				</div>
 			</div>

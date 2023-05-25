@@ -1,6 +1,5 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBars, faBarsProgress} from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
 import Image from 'next/image';
 import HeaderNotificationNav from '@layout/AdminLayout/Header/HeaderNotificationNav';
 import HeaderProfileNav from '@layout/AdminLayout/Header/HeaderProfileNav';

@@ -1,47 +1,71 @@
+/* eslint-disable @typescript-eslint/ban-types */
+
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {
-	faStethoscope,
-	faHandsHoldingCircle,
-	faEllipsisV,
-} from '@fortawesome/free-solid-svg-icons';
+import {faEllipsisV} from '@fortawesome/free-solid-svg-icons';
 import React, {useMemo, useEffect, useState} from 'react';
 import {faCalendar} from '@fortawesome/free-regular-svg-icons';
 import {Tables} from '@components/Table/Table';
 import {faker} from '@faker-js/faker';
+// Import faker from 'faker';
 import {Button, OverlayTrigger, Popover} from 'react-bootstrap';
 import Image from 'next/image';
 
-const Dashboard = (props: any) => {
-//   Let [data, setData] = useState<{ email: string; location: string }[]>([]);
+type ResidentData = {
+	ResidentName: string;
+	BlockNo: string;
+	Dob: string;
+	AdmissionDate: string;
+	InsuranceType: string;
+	Lcd: string;
+	LastAssessmentDate: string;
+	LastAssessmentType: string;
+};
 
-	const popover = (
-		<Popover id="popper-basic" className="bg-light">
-			<Popover.Body>
-				<div className="col ">
-					<div className="row-3 py-2">Do Assessment</div>
-					<div className="row-3 py-2">Deactivate Resident</div>
-					<div className="row-3 py-2">Update Resident</div>
-					<div className="row-3 py-2">View Resident</div>
-				</div>
-			</Popover.Body>
-		</Popover>
-	);
+const Dashboard = (props: any) => {
+	const [data, setData] = useState<ResidentData[]>([]);
+
+	const [selectedCard, setSelectedCard] = useState<number | null>(null);
+
+	const selectCard = (cardNumber: number) => {
+		setSelectedCard(cardNumber);
+	};
+
+	// Const fakeData = useMemo(() => Array.from({length: 5}, () => ({
+	// 	ResidentName: faker.name.firstName(),
+	// 	BlockNo: faker.address.streetAddress(),
+	// 	Dob: faker.date.past().toLocaleDateString(),
+	// 	AdmissionDate: faker.date.past().toLocaleDateString(),
+	// 	InsuranceType: faker.lorem.word(),
+	// 	Lcd: faker.date.past().toLocaleDateString(),
+	// 	LastAssessmentDate: faker.date.past().toLocaleDateString(),
+	// 	LastAssessmentType: faker.lorem.word(),
+	// })), []);
+
+	useEffect(() => {
+		const fakeData: ResidentData[] = Array.from({length: 50}, () => ({
+			ResidentName: faker.name.firstName(),
+			BlockNo: faker.name.jobTitle(),
+			Dob: faker.date.past().toLocaleDateString(),
+			AdmissionDate: faker.date.past().toLocaleDateString(),
+			InsuranceType: faker.lorem.word(),
+			Lcd: faker.date.past().toLocaleDateString(),
+			LastAssessmentDate: faker.date.past().toLocaleDateString(),
+			LastAssessmentType: faker.lorem.word(),
+		}));
+
+		setData(fakeData);
+	}, []);
 
 	const columns = useMemo(
 		() => [
 			{Header: 'Resident Name', accessor: 'ResidentName'},
-			{Header: 'BlockNo. & RoomNo.', accessor: 'BlockNo'},
-			{Header: 'DOB', accessor: 'DOB'},
+			{Header: 'Block No', accessor: 'BlockNo'},
+			{Header: 'Date of Birth', accessor: 'Dob'},
 			{Header: 'Admission Date', accessor: 'AdmissionDate'},
 			{Header: 'Insurance Type', accessor: 'InsuranceType'},
-			{Header: 'LCD', accessor: 'LCD'},
-			{
-				Header: 'LastAssessment',
-				columns: [
-					{Header: 'Date', accessor: 'LastAssessmentDate'},
-					{Header: 'Type', accessor: 'LastAssessmentType'},
-				],
-			},
+			{Header: 'LCD', accessor: 'Lcd'},
+			{Header: 'Last Assessment Date', accessor: 'LastAssessmentDate'},
+			{Header: 'Last Assessment Type', accessor: 'LastAssessmentType'},
 			{
 				Header: 'Action',
 				accessor: 'Action',
@@ -54,7 +78,7 @@ const Dashboard = (props: any) => {
 							overlay={popover}
 						>
 							<Button variant="white">
-								<FontAwesomeIcon icon={faEllipsisV} size="2x" color="#b67be8" />
+								<FontAwesomeIcon icon={faEllipsisV} size="2x" />
 							</Button>
 						</OverlayTrigger>
 					);
@@ -62,6 +86,19 @@ const Dashboard = (props: any) => {
 			},
 		],
 		[],
+	);
+
+	const popover = (
+		<Popover id="popper-basic" className="bg-light">
+			<Popover.Body>
+				<div className="col ">
+					<div className="row-3 py-2">Do Assessment</div>
+					<div className="row-3 py-2">Deactivate Resident</div>
+					<div className="row-3 py-2">Update Resident</div>
+					<div className="row-3 py-2">View Resident</div>
+				</div>
+			</Popover.Body>
+		</Popover>
 	);
 
 	//   UseEffect(() => {
@@ -78,115 +115,115 @@ const Dashboard = (props: any) => {
 	//     setData(fakeData);
 	//   }, []);
 
-	const data = useMemo(
-		() => [
-			{
-				ResidentName: 'Sohail Patil',
-				BlockNo: 'Business Admin',
-				DOB: '19/01/1968',
-				AdmissionDate: '01/11/2022',
-				InsuranceType: 'Mediacre A',
-				LCD: '09/11/1997',
-				LastAssessmentDate: '09/11/1997',
-				LastAssessmentType: '5 Days',
-				NextAssessmentDate: '09/11/1997',
-				NextAssessmentType: '5 Days',
-			},
+	// const data = useMemo(
+	// 	() => [
+	// 		{
+	// 			ResidentName: 'Sohail Patil',
+	// 			BlockNo: 'Business Admin',
+	// 			Dob: '19/01/1968',
+	// 			AdmissionDate: '01/11/2022',
+	// 			InsuranceType: 'Mediacre A',
+	// 			Lcd: '09/11/1997',
+	// 			LastAssessmentDate: '09/11/1997',
+	// 			LastAssessmentType: '5 Days',
+	// 			NextAssessmentDate: '09/11/1997',
+	// 			NextAssessmentType: '5 Days',
+	// 		},
 
-			{
-				ResidentName: 'Sohail Patil',
-				BlockNo: 'Business Admin',
-				DOB: '19/01/1968',
-				AdmissionDate: '01/11/2022',
-				InsuranceType: 'Mediacre A',
-				LCD: '09/11/1997',
-				LastAssessmentDate: '09/11/1997',
-				LastAssessmentType: '5 Days',
-				NextAssessmentDate: '09/11/1997',
-				NextAssessmentType: '5 Days',
-			},
+	// 		{
+	// 			ResidentName: 'Sohail Patil',
+	// 			BlockNo: 'Business Admin',
+	// 			Dob: '19/01/1968',
+	// 			AdmissionDate: '01/11/2022',
+	// 			InsuranceType: 'Mediacre A',
+	// 			Lcd: '09/11/1997',
+	// 			LastAssessmentDate: '09/11/1997',
+	// 			LastAssessmentType: '5 Days',
+	// 			NextAssessmentDate: '09/11/1997',
+	// 			NextAssessmentType: '5 Days',
+	// 		},
 
-			{
-				ResidentName: 'Sohail Patil',
-				BlockNo: 'Business Admin',
-				DOB: '19/01/1968',
-				AdmissionDate: '01/11/2022',
-				InsuranceType: 'Mediacre A',
-				LCD: '09/11/1997',
-				LastAssessmentDate: '09/11/1997',
-				LastAssessmentType: '5 Days',
-				NextAssessmentDate: '09/11/1997',
-				NextAssessmentType: '5 Days',
-			},
+	// 		{
+	// 			ResidentName: 'Sohail Patil',
+	// 			BlockNo: 'Business Admin',
+	// 			Dob: '19/01/1968',
+	// 			AdmissionDate: '01/11/2022',
+	// 			InsuranceType: 'Mediacre A',
+	// 			Lcd: '09/11/1997',
+	// 			LastAssessmentDate: '09/11/1997',
+	// 			LastAssessmentType: '5 Days',
+	// 			NextAssessmentDate: '09/11/1997',
+	// 			NextAssessmentType: '5 Days',
+	// 		},
 
-			{
-				ResidentName: 'Sohail Patil',
-				BlockNo: 'Business Admin',
-				DOB: '19/01/1968',
-				AdmissionDate: '01/11/2022',
-				InsuranceType: 'Mediacre A',
-				LCD: '09/11/1997',
-				LastAssessmentDate: '09/11/1997',
-				LastAssessmentType: '5 Days',
-				NextAssessmentDate: '09/11/1997',
-				NextAssessmentType: '5 Days',
-			},
+	// 		{
+	// 			ResidentName: 'Sohail Patil',
+	// 			BlockNo: 'Business Admin',
+	// 			Dob: '19/01/1968',
+	// 			AdmissionDate: '01/11/2022',
+	// 			InsuranceType: 'Mediacre A',
+	// 			Lcd: '09/11/1997',
+	// 			LastAssessmentDate: '09/11/1997',
+	// 			LastAssessmentType: '5 Days',
+	// 			NextAssessmentDate: '09/11/1997',
+	// 			NextAssessmentType: '5 Days',
+	// 		},
 
-			{
-				ResidentName: 'Sohail Patil',
-				BlockNo: 'Business Admin',
-				DOB: '19/01/1968',
-				AdmissionDate: '01/11/2022',
-				InsuranceType: 'Mediacre A',
-				LCD: '09/11/1997',
-				LastAssessmentDate: '09/11/1997',
-				LastAssessmentType: '5 Days',
-				NextAssessmentDate: '09/11/1997',
-				NextAssessmentType: '5 Days',
-			},
+	// 		{
+	// 			ResidentName: 'Sohail Patil',
+	// 			BlockNo: 'Business Admin',
+	// 			Dob: '19/01/1968',
+	// 			AdmissionDate: '01/11/2022',
+	// 			InsuranceType: 'Mediacre A',
+	// 			Lcd: '09/11/1997',
+	// 			LastAssessmentDate: '09/11/1997',
+	// 			LastAssessmentType: '5 Days',
+	// 			NextAssessmentDate: '09/11/1997',
+	// 			NextAssessmentType: '5 Days',
+	// 		},
 
-			{
-				ResidentName: 'Sohail Patil',
-				BlockNo: 'Business Admin',
-				DOB: '19/01/1968',
-				AdmissionDate: '01/11/2022',
-				InsuranceType: 'Mediacre A',
-				LCD: '09/11/1997',
-				LastAssessmentDate: '09/11/1997',
-				LastAssessmentType: '5 Days',
-				NextAssessmentDate: '09/11/1997',
-				NextAssessmentType: '5 Days',
-			},
+	// 		{
+	// 			ResidentName: 'Sohail Patil',
+	// 			BlockNo: 'Business Admin',
+	// 			Dob: '19/01/1968',
+	// 			AdmissionDate: '01/11/2022',
+	// 			InsuranceType: 'Mediacre A',
+	// 			Lcd: '09/11/1997',
+	// 			LastAssessmentDate: '09/11/1997',
+	// 			LastAssessmentType: '5 Days',
+	// 			NextAssessmentDate: '09/11/1997',
+	// 			NextAssessmentType: '5 Days',
+	// 		},
 
-			{
-				ResidentName: 'Sohail Patil',
-				BlockNo: 'Business Admin',
-				DOB: '19/01/1968',
-				AdmissionDate: '01/11/2022',
-				InsuranceType: 'Mediacre A',
-				LCD: '09/11/1997',
-				LastAssessmentDate: '09/11/1997',
-				LastAssessmentType: '5 Days',
-				NextAssessmentDate: '09/11/1997',
-				NextAssessmentType: '5 Days',
-			},
+	// 		{
+	// 			ResidentName: 'Sohail Patil',
+	// 			BlockNo: 'Business Admin',
+	// 			Dob: '19/01/1968',
+	// 			AdmissionDate: '01/11/2022',
+	// 			InsuranceType: 'Mediacre A',
+	// 			Lcd: '09/11/1997',
+	// 			LastAssessmentDate: '09/11/1997',
+	// 			LastAssessmentType: '5 Days',
+	// 			NextAssessmentDate: '09/11/1997',
+	// 			NextAssessmentType: '5 Days',
+	// 		},
 
-			{
-				ResidentName: 'Sohail Patil',
-				BlockNo: 'Business Admin',
-				DOB: '19/01/1968',
-				AdmissionDate: '01/11/2022',
-				InsuranceType: 'Mediacre A',
-				LCD: '09/11/1997',
-				LastAssessmentDate: '09/11/1997',
-				LastAssessmentType: '5 Days',
-				NextAssessmentDate: '09/11/1997',
-				NextAssessmentType: '5 Days',
-			}, // { ResidentName: "Sohail Patil", BlockNo: 'Business Admin', DOB: '19/01/1968', AdmissionDate: "01/11/2022", InsuranceType: "Mediacre A", LCD: "09/11/1997", LastAssessmentDate: "09/11/1997", LastAssessmentType: "5 Days", NextAssessmentDate: "09/11/1997", NextAssessmentType: "5 Days", Action:".." }, // { ResidentName: "Sohail Patil", BlockNo: 'Business Admin', DOB: '19/01/1968', AdmissionDate: "01/11/2022", InsuranceType: "Mediacre A", LCD: "09/11/1997", LastAssessmentDate: "09/11/1997", LastAssessmentType: "5 Days", NextAssessmentDate: "09/11/1997", NextAssessmentType: "5 Days", Action:".." }, // Add more data here
-		],
+	// 		{
+	// 			ResidentName: 'Sohail Patil',
+	// 			BlockNo: 'Business Admin',
+	// 			Dob: '19/01/1968',
+	// 			AdmissionDate: '01/11/2022',
+	// 			InsuranceType: 'Mediacre A',
+	// 			Lcd: '09/11/1997',
+	// 			LastAssessmentDate: '09/11/1997',
+	// 			LastAssessmentType: '5 Days',
+	// 			NextAssessmentDate: '09/11/1997',
+	// 			NextAssessmentType: '5 Days',
+	// 		}, // { ResidentName: "Sohail Patil", BlockNo: 'Business Admin', Dob: '19/01/1968', AdmissionDate: "01/11/2022", InsuranceType: "Mediacre A", Lcd: "09/11/1997", LastAssessmentDate: "09/11/1997", LastAssessmentType: "5 Days", NextAssessmentDate: "09/11/1997", NextAssessmentType: "5 Days", Action:".." }, // { ResidentName: "Sohail Patil", BlockNo: 'Business Admin', Dob: '19/01/1968', AdmissionDate: "01/11/2022", InsuranceType: "Mediacre A", Lcd: "09/11/1997", LastAssessmentDate: "09/11/1997", LastAssessmentType: "5 Days", NextAssessmentDate: "09/11/1997", NextAssessmentType: "5 Days", Action:".." }, // Add more data here
+	// 	],
 
-		[],
-	);
+	// 	[],
+	// );
 
 	return (
 		<>
@@ -195,28 +232,51 @@ const Dashboard = (props: any) => {
 					<div className="card CustomCard">
 						<div className="cards-title d-flex justify-content-between align-items-end">
 							<text>5 Days Plan</text>
-							<Image src={'/Icons/Plan_IC.png'}  alt={''} width={44} height={44}/>
+							<Image
+								src={'/Icons/Plan_IC.png'}
+								alt={''}
+								width={44}
+								height={44}
+							/>
 						</div>
-						<div className="card-body border-top borderColor p-0">
+						<div className="card-body border-top p-0">
 							<div className="row text-center">
-								<div className="col py-3 border-end borderColor">
-									<div className="cards-num">10</div>
-									<div className="cards-info">
-                    Not Started
+								<div
+									className={`col py-3 border-end ${
+										selectedCard === 1 ? 'active' : ''
+									}`}
+									onClick={() => {
+										selectCard(1);
+									}}
+								>
+									<div className="card-content">
+										<div className="cards-num">10</div>
+										<div className="cards-info">Not Started</div>
 									</div>
 								</div>
-								<div className="vr p-0" />
-								<div className="col py-3 border-end borderColor">
-									<div className="cards-num">20</div>
-									<div className="cards-info">
-                    Incomplete
+								<div
+									className={`col py-3 border-end ${
+										selectedCard === 2 ? 'active' : ''
+									}`}
+									onClick={() => {
+										selectCard(2);
+									}}
+								>
+									<div className="card-content">
+										{' '}
+										<div className="cards-num">20</div>
+										<div className="cards-info">Incomplete</div>
 									</div>
 								</div>
-								<div className="vr p-0" />
-								<div className="col py-3">
-									<div className="cards-num">20</div>
-									<div className="cards-info">
-                    Overdue 14 days
+								<div
+									className={`col py-3 ${selectedCard === 3 ? 'active' : ''}`}
+									onClick={() => {
+										selectCard(3);
+									}}
+								>
+									<div className="card-content">
+										<div className="cards-num">20</div>
+										<div className="cards-info">Overdue 14 days</div>
 									</div>
 								</div>
 							</div>
@@ -228,19 +288,37 @@ const Dashboard = (props: any) => {
 					<div className="card  CustomCard">
 						<div className="cards-title d-flex justify-content-between align-items-end">
 							<text>IPA</text>
-							<Image src={'/Icons/IPA_IC.png'}  alt={''} width={44} height={44}/>
+							<Image
+								src={'/Icons/IPA_IC.png'}
+								alt={''}
+								width={44}
+								height={44}
+							/>
 						</div>
-						<div className="card-body border-top borderColor p-0">
+						<div className="card-body border-top p-0">
 							<div className="row text-center">
-								<div className="col py-3 border-end borderColor">
-									<div className="cards-num">10</div>
-									<div className=" cards-info">In Progress</div>
+								<div className={`col py-3 ${
+									selectedCard === 4 ? 'active' : ''
+								}`}
+								onClick={() => {
+									selectCard(4);
+								}}>
+									<div className="card-content">
+										{' '}
+										<div className="cards-num">10</div>
+										<div className=" cards-info">In Progress</div>
+									</div>
 								</div>
 								{/* <div className="vr p-0" /> */}
-								<div className="col py-3">
-									<div className="cards-num">20</div>
-									<div className=" cards-info">
-                    Overdue 14 days
+								<div className={`col py-3 border-end ${
+									selectedCard === 5 ? 'active' : ''
+								}`}
+								onClick={() => {
+									selectCard(5);
+								}}>
+									<div className="card-content">
+										<div className="cards-num">20</div>
+										<div className=" cards-info">Overdue 14 days</div>
 									</div>
 								</div>
 							</div>
@@ -250,21 +328,39 @@ const Dashboard = (props: any) => {
 				<div className="col-sm-6 col-lg-4">
 					<div className="card  CustomCard">
 						<div className="cards-title d-flex justify-content-between align-items-end">
-							<text>LCD </text>
-							<Image src={'/Icons/LCD_IC.png'}  alt={''} width={44} height={44}/>
-
+							<text>Lcd </text>
+							<Image
+								src={'/Icons/LCD_IC.png'}
+								alt={''}
+								width={44}
+								height={44}
+							/>
 						</div>
-						<div className="card-body border-top borderColor p-0">
+						<div className="card-body border-top p-0">
 							<div className="row text-center">
-								<div className="col py-3 border-end borderColor">
-									<div className="cards-num">10</div>
-									<div className=" cards-info">Last 7 days</div>
+								<div className={`col py-3 border-end ${
+									selectedCard === 6 ? 'active' : ''
+								}`}
+								onClick={() => {
+									selectCard(6);
+								}}>
+									<div className="card-content">
+										<div className="cards-num">10</div>
+										<div className=" cards-info">Last 7 days</div>
+									</div>
 								</div>
 								{/* <div className="vr p-0" /> */}
-								<div className="col py-3">
-									<div className="cards-num">20</div>
-									<div className="text-uppercase cards-info">
-                    Next 7 days
+								<div className={`col py-3 ${
+									selectedCard === 7 ? 'active' : ''
+								}`}
+								onClick={() => {
+									selectCard(7);
+								}}>
+									<div className="card-content">
+										{' '}
+										<div className="cards-num">20</div>
+										<div className="cards-info">Next 7 days</div>
+                    
 									</div>
 								</div>
 							</div>

@@ -9,12 +9,16 @@ $enable-negative-margins: true;
 @import "layout/sidebar";
 @import "../assets/scss/custom/fonts/fonts";
 @import "~nprogress/nprogress.css";
-
+@import "layout/login";
 @import "_custom";
 @import "table";
 @import "_Dashboard";
 @import "./admitResident.scss";
+@import "./facilityMeeting.scss";
+
+    
 
 body{
     font-family: 'Sarala', sans-serif;
+    overflow: hidden;
 }

@@ -37,7 +37,6 @@ export const Tables: React.FC<ITablesProps> = ({columns, data}) => {
 	);
 
 	// Const { globalFilter } = state;
-
 	const renderHeader = () => headerGroups.map((headerGroup: any) => (
 		<tr {...headerGroup.getHeaderGroupProps()}>
 			{headerGroup.headers.map((column: any) => (
@@ -87,12 +86,14 @@ export const Tables: React.FC<ITablesProps> = ({columns, data}) => {
 									<text className='admit-btn-txt'>Admit Resident</text>
 								</button>
 							</Link>					
-						
-							<button className='meet-btn'>
-								<text className='meet-btn-txt'>
+							<Link href={'/facilityMeeting'}>
+								<button className='meet-btn'>
+									<text className='meet-btn-txt'>
 								Start Facility Meeting
-								</text>
-							</button>
+									</text>
+								</button>
+							</Link>
+							
 						</div>
 					</div>
 
